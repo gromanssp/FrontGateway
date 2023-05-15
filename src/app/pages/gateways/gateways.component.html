@@ -1,0 +1,35 @@
+<div class="container">
+  <h2 class="title is-centered">Gateways List</h2>
+  <button [routerLink]="['/gateway', 'new']" class="button is-normal is-success is-light">
+    New Gateway
+    <i class="fa fa-plus"></i>
+  </button>
+  <table class="table is-striped">
+    <thead>
+      <tr>
+        <th>Serial Number</th>
+        <th>Name</th>
+        <th>IPv4 Address</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="gateways.length !== 0">
+      <tr *ngFor="let gate of gateways">
+        <td>{{ gate.serialNumber }}</td>
+        <td>{{ gate.fullName }}</td>
+        <td>{{ gate.ipv4Address }}</td>
+        <td>
+          <button [routerLink]="['/devices', gate._id]" class="button is-small is-info is-outlined">
+            <i class="fa fa-mobile-retro"></i>
+          </button>
+          <!-- <button [routerLink]="['/gateway', gate._id]" class="button is-small is-warning is-light">
+              <i class="fa fa-edit"></i>
+          </button> -->
+          <button (click)="deleteGateway(gate._id!)" class="button is-small is-danger is-light">
+              <i class="fa fa-trash-can"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

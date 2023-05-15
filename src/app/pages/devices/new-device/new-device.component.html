@@ -1,0 +1,36 @@
+<section class="section">
+  <div class="container">
+    <form #f="ngForm" ngNativevalidate (ngSubmit)="addDevice(f)">
+      <div class="field">
+        <label class="label">UID</label>
+        <div class="control">
+          <input class="input" type="number" name="uid" [(ngModel)]="device.uid" placeholder="Enter UID" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Vendor</label>
+        <div class="control">
+          <input class="input" type="text" name="vendor" [(ngModel)]="device.vendor" placeholder="Enter the Name">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Status</label>
+        <div class="control">
+          <select class="select is-info" name="status" [(ngModel)]="device.status" placeholder="Select status" required>
+            <option value="online">online</option>
+            <option value="offline">offline</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <button [disabled]="!f.valid" type="submit" class="button is-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
